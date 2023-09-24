@@ -2,11 +2,11 @@ Feature: Loging to MyAccount by clicking on My Account button
 
 
   Background:
-    Given user launched the browser and navigate to the URL
+    #Given user launched the browser and navigate to the URL
     And   user clicked on My Account button
     Then  user clicked on LOGIN button to log in
 
-@LoginPass
+@LoginPass @regression
   Scenario: Loging in to MyAccount With valid credential
 
     #Given user launched the browser and navigate to the URL
@@ -15,15 +15,16 @@ Feature: Loging to MyAccount by clicking on My Account button
     And   user enters  password
     Then  user clicked on LOGIN button to log in
 
-  @Loginfail
-  Scenario Outline: Loging in to MyAccount With correct Email and Wrong Password
+  @Loginfail @regression
+  Scenario Outline: Invalid login functionality
 
-    When  user enters valid email "<EmailAddress>"
-    And   user enters  invalid "<password>"
-    #Then  user clicked on LOGIN button to log in
+    When user enters different "<username>" and "<password>" and verify the "<error>" for it
 
-  Examples:
-    | EmailAddress          | password       |
-    | herrafiisdet@gmail.com | WrongPassword1 |
+    Examples:
+      | username              | password       | error                        |
+      |herrafiisdet@gmail.com |cristiano       |Invalid login or password.    |
+      |ronaldo@gmail.com      |Automation2023@ |Invalid login or password.    |
 
+# 1 VALID username INVALID password
+# 2 INVALID username VALID password
 

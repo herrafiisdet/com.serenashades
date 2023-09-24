@@ -9,7 +9,8 @@ import org.junit.runner.RunWith;
 @CucumberOptions(features = "src/test/resources/Features",
         glue = "StepDefinitions",
         dryRun = false,
-        tags = "@LoginPass",
+        tags = "@regression",
+        monochrome = true,
         plugin ={"pretty", "html:target/Cucumber.html", "json:target/Cucumber.json","rerun:target/failed.txt"}
 )
 
