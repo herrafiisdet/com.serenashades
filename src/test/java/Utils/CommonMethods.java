@@ -5,6 +5,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.log4j.xml.DOMConfigurator;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -26,8 +27,23 @@ public class CommonMethods extends PageInitializer {
         String browserType = ConfigReader.getPropertyValue("browserType");
         switch (browserType) {
             case "Chrome":
-                driver = new ChromeDriver();
+
+
+
+                ChromeOptions ops = new ChromeOptions();  // this line needed for Jenkins job
+                ops.addArguments("--no-sandbox");         // this line needed for Jenkins job
+                ops.addArguments("--remote-allow-origins=*");  // this line needed for Jenkins job
+                if(ConfigReader.getPropertyValue("Headless").equals("true")){   // this line needed for Jenkins job
+                    ops.addArguments("--headless=new");   // this line needed for Jenkins job
+                }
+
+
+
+                driver = new ChromeDriver(ops);  // (ops) needed for Jenkins job
                 break;
+
+
+
             case "Firefox":
                 driver = new FirefoxDriver();
                 break;

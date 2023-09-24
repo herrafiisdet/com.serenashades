@@ -15,7 +15,7 @@ Feature: Loging to MyAccount by clicking on My Account button
     And   user enters  password
     Then  user clicked on LOGIN button to log in
 
-  @Loginfail @regression
+  @Loginfail
   Scenario Outline: Invalid login functionality
 
     When user enters different "<username>" and "<password>" and verify the "<error>" for it
