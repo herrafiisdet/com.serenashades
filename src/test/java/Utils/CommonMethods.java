@@ -10,7 +10,9 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import javax.swing.*;
 import java.io.File;
@@ -29,19 +31,15 @@ public class CommonMethods extends PageInitializer {
             case "Chrome":
 
 
+               //ChromeOptions ops = new ChromeOptions();  // this line needed for Jenkins job
+               // ops.addArguments("--no-sandbox");         // this line needed for Jenkins job
+               // ops.addArguments("--remote-allow-origins=*");  // this line needed for Jenkins job
+              //  if(ConfigReader.getPropertyValue("Headless").equals("true")){   // this line needed for Jenkins job
+               //     ops.addArguments("--headless=new");   // this line needed for Jenkins job
+               // }
 
-                ChromeOptions ops = new ChromeOptions();  // this line needed for Jenkins job
-                ops.addArguments("--no-sandbox");         // this line needed for Jenkins job
-                ops.addArguments("--remote-allow-origins=*");  // this line needed for Jenkins job
-                if(ConfigReader.getPropertyValue("Headless").equals("true")){   // this line needed for Jenkins job
-                    ops.addArguments("--headless=new");   // this line needed for Jenkins job
-                }
-
-
-
-                driver = new ChromeDriver(ops);  // (ops) needed for Jenkins job
+                driver = new ChromeDriver();  // (ops) needed for Jenkins job
                 break;
-
 
 
             case "Firefox":
@@ -62,7 +60,6 @@ public class CommonMethods extends PageInitializer {
         Log.info("My test case is executing right now");
         Log.warning("My test case might have some issues");
     }
-
     public static void closeBrowser() {
         Log.info("This test case is about to get completed");
         Log.endTestCase("This  Test Case is finished");
@@ -128,7 +125,66 @@ public class CommonMethods extends PageInitializer {
         actions.moveToElement(mainMenu).perform();
         doClick(mainMenu);
     }
-    //--------------------------Calender  method -------------------
+    //******************************* move mouse vertically *****************
+    public static JavascriptExecutor getJSExecutor() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        return js;
+    }
+    public static void jsScroll300() {
+        getJSExecutor().executeScript("window.scrollBy(0,300)");
+    }
+
+    public static void jsScroll500() {
+        getJSExecutor().executeScript("window.scrollBy(0,500)");
+    }
+
+    public static void jsScroll1000() {
+        getJSExecutor().executeScript("window.scrollBy(0,1200)");
+    }
+
+  //***************************************** Thread.sleep  ********************************
+
+    public static void sleep(long milliseconds) {
+        ;
+        try {
+            Thread.sleep(milliseconds);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+
+//*********************************************************************
+
+    public static void jsClick(WebElement element) {
+        getJSExecutor().executeScript("arguments[0].click();", element);
+    }
+
+
+    //----------------------------getWait--------------------------------------------------
+
+   // public static WebDriverWait getWait() {
+     //  WebDriverWait wait = new WebDriverWait(driver,Constants.EXPLICIT_WAIT);
+     //  return wait;
+   //}
+
+//*****************************
+
+   // public static void waitForClickability(WebElement element) {
+   //     getWait().until(ExpectedConditions.elementToBeClickable(element));
+   // }
+
+    /**
+     * this method makes click on webElement
+     *
+     * @param element - webElement which we need to click
+     */
+   // public static void click(WebElement element) {
+  //      waitForClickability(element);
+   //     element.click();
+   // }
+
+
+        //--------------------------Calender  method -------------------
     //This method takes 4 parameters
     //1st WebElement this is to activate your Calendar! Store a locator for the caldera you want activate by clicking.
     //2nd Enter the year!

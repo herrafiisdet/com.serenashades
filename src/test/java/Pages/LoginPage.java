@@ -27,4 +27,6 @@ public class LoginPage extends CommonMethods {
     @FindBy(xpath= "//div[@data-bind='html: $parent.prepareMessageForHtml(message.text)']")
     public WebElement errorMessage;
 
+    @FindBy(xpath = "//h1[contains(text(),'Account Summary')]")
+    public WebElement myAccountWelcomeMessage;
 }
