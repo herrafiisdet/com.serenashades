@@ -31,12 +31,24 @@ public class CommonMethods extends PageInitializer {
             case "Chrome":
 
 
-                ChromeOptions cp=new ChromeOptions(); //needed for Jenkins job
-                cp.setHeadless(false);                   //needed for Jenkins job
+
+                ChromeOptions cp=new ChromeOptions();
+                cp.setHeadless(true);
 
 
-                driver = new ChromeDriver(cp);  // (cp) needed for Jenkins job
+/*
+                ChromeOptions ops = new ChromeOptions();
+                ops.addArguments("--no-sandbox");
+                ops.addArguments("--remote-allow-origins=*");
+                if(ConfigReader.getPropertyValue("Headless").equals("true")){
+                    ops.addArguments("--headless=new");
+                }
+*/
+
+                driver = new ChromeDriver();  // (cp) needed for Jenkins job
                 break;
+
+
 
             case "Firefox":
                 driver = new FirefoxDriver();
