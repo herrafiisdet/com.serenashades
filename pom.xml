@@ -73,7 +73,7 @@
                 <version>3.0.0</version>
                 <configuration>
                     <includes>
-                        <include>**/*Runners.java</include>
+                        <include>**/*TestRunner.java</include>
                     </includes>
                 </configuration>
             </plugin>

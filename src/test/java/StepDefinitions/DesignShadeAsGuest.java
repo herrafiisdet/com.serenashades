@@ -29,7 +29,7 @@ public class DesignShadeAsGuest extends CommonMethods {
 
         clickDropDown(designShadeAsGuest.selectWidth).selectByVisibleText(width);
         //sleep(2000);
-        //clickDropDown(designShadeAsGuest.selectWidthFraction).selectByVisibleText(widthfraction);
+        clickDropDown(designShadeAsGuest.selectWidthFraction).selectByVisibleText(widthfraction);
         //sleep(2000);
         clickDropDown(designShadeAsGuest.selectHeight).selectByVisibleText(height);
         //sleep(2000);
@@ -86,13 +86,13 @@ public class DesignShadeAsGuest extends CommonMethods {
 
     @Then("user clicked on Next btn")
     public void user_clicked_on_next_btn() {
-        //sleep(2000);
+        sleep(2000);
         doClick(designShadeAsGuest.clickNextBtn5);
     }
 
     @Then("user clicked to select Fabric Collection Color Red")
     public void user_clicked_to_select_fabric_collection_color_red() {
-        //sleep(2000);
+        sleep(2000);
         doClick(designShadeAsGuest.selectColor);
         //sleep(2000);
         jsScroll1000();
