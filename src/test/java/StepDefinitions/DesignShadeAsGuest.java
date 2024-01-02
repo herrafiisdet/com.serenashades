@@ -60,7 +60,7 @@ public class DesignShadeAsGuest extends CommonMethods {
         //sleep(2000);
         doClick(designShadeAsGuest.selectMountingType);
         //sleep(2000);
-        jsScroll300();
+        jsScroll500();
     }
 
     @Then("user clicked to choose the Headrail Option Architectural Fascia")
